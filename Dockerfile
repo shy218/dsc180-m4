@@ -16,13 +16,17 @@ LABEL maintainer="UC San Diego ITS/ETS <ets-consult@ucsd.edu>"
 # 2) change to root to install packages
 USER root
 
-RUN DEBIAN_FRONTEND='noninteractive' apt-get install aria2 -y
-RUN DEBIAN_FRONTEND='noninteractive' apt-get install nmap -y
-RUN DEBIAN_FRONTEND='noninteractive' apt-get install traceroute -y
+#RUN add-apt-repository -yu 'deb http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu xenial main'
+RUN apt-get update
+#RUN apt-get install gcc-4.9 g++-4.9 gcc-4.9-multilib
+RUN apt-get install g++ -y
+RUN DEBIAN_FRONTEND='noninteractive' apt-get install openjdk-8-jdk -y
+RUN DEBIAN_FRONTEND='noninteractive' apt-get install curl -y
+RUN DEBIAN_FRONTEND='noninteractive' apt-get install cmake -y 
 
 # 3) install packages
-RUN pip install --no-cache-dir geopandas babypandas
-
+#RUN pip install --no-cache-dir numpy pandas seaborn 
+RUN pip3 install --no-cache-dir numpy pandas seaborn==0.11
 
 # Override command to disable running jupyter notebook at launch
 # CMD ["/bin/bash"]
