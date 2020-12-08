@@ -26,7 +26,7 @@ RUN DEBIAN_FRONTEND='noninteractive' apt-get install cmake -y
 
 # 3) install packages
 #RUN pip install --no-cache-dir numpy pandas seaborn 
-RUN pip3 install --no-cache-dir numpy pandas seaborn==0.11
+RUN pip3 install --no-cache-dir numpy pandas matplotlib gensim seaborn==0.11
 
 # Override command to disable running jupyter notebook at launch
 # CMD ["/bin/bash"]
